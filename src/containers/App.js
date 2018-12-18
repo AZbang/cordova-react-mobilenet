@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Camera from '../components/Camera';
-import ChipCard from '../compotents/ChipCard';
+import ChipCard from '../components/ChipCard';
 
 class App extends React.PureComponent {
   onStream = (img) => {
