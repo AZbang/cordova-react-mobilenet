@@ -1,8 +1,7 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import mediaStream from './mediaStream';
+import model from './model';
 
-import ui from './ui'
-import model from './model'
-
-export default (history) => combineReducers({
-  model, ui
+export default () => combineReducers({
+  mediaStream, model
 });

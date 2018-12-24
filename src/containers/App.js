@@ -1,27 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import actions from '../actions';
 import Camera from '../components/Camera';
 import ChipCard from '../components/ChipCard';
 
 class App extends React.PureComponent {
+  componentDidMount() {
+    this.props.getMediaStream();
+    this.props.loadModel();
+  }
+
   onStream = (img) => {
 
-  }
-
-  state = {
-    mainChipShow: false
-  }
-
-  componentDidMount() {
-    setTimeout(() => this.setState({mainChipShow: true}), 100);
   }
 
   render() {
     return (
       <div className="App">
-        <Camera onStream={this.onStream}/>
-        <ChipCard position="top" show={this.state.mainChipShow} size={12}>
-          <h1 style={{fontFamily: "Alfa Slab One"}}>Flowers skaner</h1>
+        <Camera
+          snapshotInterval={500}
+          stream={this.props.stream}
+          onSnapshot={this.onSnapshot}
+        />
+        <ChipCard position="top" show={!this.props.loadingModal} size={12}>
+          <h1>Onnx model is loaded!</h1>
         </ChipCard>
       </div>
     )
@@ -29,7 +32,18 @@ class App extends React.PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  loading: state.ui.loading
+  loadingModel: state.model.loading,
+  modelType: state.model.type,
+  predictData: state.model.predictData,
+  stream: state.mediaStream.stream,
+  streamError: state.mediaStream.error
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators({
+    getMediaStream: actions.getMediaStream.request,
+    loadModel: actions.loadModelOnnx.request,
+    predictModel: actions.predictModelOnnx.request
+  }, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
