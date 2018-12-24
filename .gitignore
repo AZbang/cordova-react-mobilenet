@@ -2,14 +2,19 @@
 
 # dependencies
 /node_modules
+/plugins
 
 # testing
 /coverage
 
 # production
 /build
+/platforms
+/www
 
 # misc
+build.json
+azbang.jks
 .DS_Store
 .env.local
 .env.development.local

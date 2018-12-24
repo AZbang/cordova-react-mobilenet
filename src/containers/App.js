@@ -8,12 +8,20 @@ class App extends React.PureComponent {
 
   }
 
+  state = {
+    mainChipShow: false
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({mainChipShow: true}), 100);
+  }
+
   render() {
     return (
       <div className="App">
         <Camera onStream={this.onStream}/>
-        <ChipCard position="bottom">
-          <h1>Классификатор сосиски!</h1>
+        <ChipCard position="top" show={this.state.mainChipShow} size={12}>
+          <h1 style={{fontFamily: "Alfa Slab One"}}>Flowers skaner</h1>
         </ChipCard>
       </div>
     )

@@ -7,10 +7,13 @@ import App from './containers/App';
 import store from './store';
 import './assets/theme.css';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App/>
-  </Provider>,
-document.getElementById('root'));
+const render = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+  document.getElementById('root'));
+}
 
 registerServiceWorker();
+document.addEventListener("deviceready", render, false);

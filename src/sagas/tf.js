@@ -10,5 +10,4 @@ export function* loadModelTF({ img }) {
 
   const prediction = yield call(model.predict, reshapedInput);
   const data = yield call(prediction.data);
-  console.log(data);
 }
