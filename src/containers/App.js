@@ -18,12 +18,14 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="App">
-        <Camera
-          snapshotInterval={500}
-          stream={this.props.stream}
-          onSnapshot={this.onSnapshot}
-        />
-        <ChipCard position="top" show={!this.props.loadingModal} size={12}>
+        {this.props.stream &&
+          <Camera
+            snapshotInterval={500}
+            stream={this.props.stream}
+            onSnapshot={this.onSnapshot}
+          />
+        }
+        <ChipCard position="bottom" show={!this.props.loadingModal} size={12}>
           <h1>Onnx model is loaded!</h1>
         </ChipCard>
       </div>
@@ -42,8 +44,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators({
     getMediaStream: actions.getMediaStream.request,
-    loadModel: actions.loadModelOnnx.request,
-    predictModel: actions.predictModelOnnx.request
+    loadModel: actions.loadModel.request,
+    predictModel: actions.predictModel.request
   }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

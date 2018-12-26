@@ -16,4 +16,7 @@ const render = () => {
 }
 
 registerServiceWorker();
-document.addEventListener("deviceready", render, false);
+
+if(window.cordova)
+  document.addEventListener("deviceready", render, false);
+else render();

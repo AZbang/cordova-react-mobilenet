@@ -1,8 +1,8 @@
 import { fork } from 'redux-saga/effects';
 import mediaStreamSaga from './mediaStream';
-import onnxSaga from './onnx';
+import modelSaga from './model';
 
 export default function* rootSaga() {
-  yield fork(onnxSaga);
+  yield fork(modelSaga);
   yield fork(mediaStreamSaga);
 }

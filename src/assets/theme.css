@@ -1,5 +1,7 @@
 body {
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: rgb(22, 101, 204);
+  font-family: 'Staatliches', cursive;
 }
