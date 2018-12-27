@@ -7,9 +7,10 @@ class ModelStore {
 
   @observable loading = false;
   @observable predictData = null;
-  @abservable error = null;
+  @observable error = null;
 
-  @action async loadModel() {
+  @action
+  async loadModel() {
     this.loading = true;
     try {
       this.model = await this.session.loadModel('assets/mobilenet.onnx');
@@ -19,11 +20,12 @@ class ModelStore {
     this.loading = false;
   }
 
-  @action async predictData(input) {
+  @action
+  async predict(input) {
     this.loading = true;
     try {
       const inputs = new Tensor(new Array(150528).fill(0), 'float32', [1, 3, 224, 224]);
-      const output = yield call(this.session.run, [inputs]);
+      this.predict = await this.session.run([inputs]);
     } catch(e) {
       this.error = e;
     }
@@ -32,4 +34,4 @@ class ModelStore {
 }
 
 
-export default new ModelStore;
+export default new ModelStore();

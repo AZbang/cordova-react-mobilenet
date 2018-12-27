@@ -1,21 +1,26 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import registerServiceWorker from './sw';
+import React from 'react';
+import { HashRouter } from 'react-router-dom';
+import { Provider } from 'mobx-react';
 
-import App from './containers/App';
-import store from './store';
+import registerServiceWorker from './sw';
+import App from './components/App';
+import stores from './stores';
 import './assets/theme.css';
 
-const render = () => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-    </Provider>,
-  document.getElementById('root'));
-}
-
+// For easier debugging
+window._____APP_STATE_____ = stores;
 registerServiceWorker();
+
+const render = () => {
+  ReactDOM.render((
+    <Provider {...stores}>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </Provider>
+  ), document.getElementById('root'));
+}
 
 if(window.cordova)
   document.addEventListener("deviceready", render, false);
