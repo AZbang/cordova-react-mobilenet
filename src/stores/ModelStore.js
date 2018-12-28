@@ -25,7 +25,7 @@ class ModelStore {
     this.loading = true;
     try {
       const inputs = new Tensor(new Array(150528).fill(0), 'float32', [1, 3, 224, 224]);
-      this.predict = await this.session.run([inputs]);
+      this.predictData = await this.session.run([inputs]);
     } catch(e) {
       this.error = e;
     }

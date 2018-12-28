@@ -11,14 +11,14 @@ class Playground extends React.Component {
     const { mediaStore, modelStore } = this.props;
 
     return (
-      <div className="Playground">
+      <div className='Playground'>
         <CameraController/>
-        <ChipCard top>
-          Наведите камеру на цветок, чтобы отсканировать его
+        <ChipCard top style={{fontSize: 14}}>
+          Zoom the camera onto the flower to scan it
         </ChipCard>
         <ChipCard swipeable bottom>
           <h1>MOBILENET</h1>
-          <p>Это приложение создано для тестирования работоспобоности onnxjs</p>
+          <p>This app created for testing onnxjs model</p>
         </ChipCard>
       </div>
     )

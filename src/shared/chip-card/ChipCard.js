@@ -3,10 +3,15 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import './ChipCard.css';
 
 class ChipCard extends React.PureComponent {
+  static defaultProps = {
+    show: true
+  }
+
   render() {
     let style = {};
-    if (this.props.position === 'top') style.top = this.props.show ? 10 : -200;
-    else if (this.props.position === 'bottom') style.bottom = this.props.show ? 10 : -200;
+    console.log(this.props);
+    if (this.props.top) style.top = this.props.show ? 10 : -200;
+    else if (this.props.bottom) style.bottom = this.props.show ? 10 : -200;
 
 
     return (

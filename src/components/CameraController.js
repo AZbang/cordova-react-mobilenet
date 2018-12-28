@@ -30,6 +30,8 @@ class CameraController extends React.Component {
         </ChipCard>
       )
     }
+
+    return null;
   }
 }
 

@@ -6,8 +6,6 @@ class Camera extends React.PureComponent {
 
   componentDidMount() {
     this.videoRef.current.srcObject = this.props.stream;
-    this.videoRef.width = 224;
-    this.vodeoRef.height = 224;
   }
 
   render() {

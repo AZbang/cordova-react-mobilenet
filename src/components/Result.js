@@ -8,7 +8,7 @@ class Result extends React.Component {
     const { mediaStore, modelStore } = this.props;
 
     return (
-      <div className="Result">
+      <div className='Result'>
 
       </div>
     )

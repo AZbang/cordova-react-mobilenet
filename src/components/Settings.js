@@ -8,7 +8,7 @@ class Settings extends React.Component {
     const { mediaStore, modelStore } = this.props;
 
     return (
-      <div className="Settings">
+      <div className='Settings'>
 
       </div>
     )
