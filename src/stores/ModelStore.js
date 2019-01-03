@@ -3,35 +3,48 @@ import { Tensor, InferenceSession } from 'onnxjs';
 
 class ModelStore {
   session = new InferenceSession({backendHint: 'webgl'});
-  logreg = null;
+  model = null;
+
+  SIZE = 224;
 
   @observable loading = false;
   @observable predictData = null;
   @observable error = null;
 
   @action
-  async loadModel() {
-    this.loading = true;
-    try {
-      this.model = await this.session.loadModel('assets/mobilenet.onnx');
-    } catch(e) {
-      this.error = e;
-    }
-    this.loading = false;
+  setLoading(loading) {
+    this.loading = loading;
   }
 
   @action
-  async predict(input) {
-    this.loading = true;
-    try {
-      const inputs = new Tensor(new Array(150528).fill(0), 'float32', [1, 3, 224, 224]);
-      this.predictData = await this.session.run([inputs]);
-    } catch(e) {
-      this.error = e;
-    }
-    this.loading = false;
+  setPredict(output) {
+    this.predictData = output;
+  }
+
+  @action
+  setError(err) {
+    this.error = err;
+  }
+
+  loadModel() {
+    this.setLoading(true);
+
+    this.session.loadModel('assets/mobilenet.onnx')
+      .catch((error) => this.setError(error))
+      .finally(() => this.setLoading(false));
+  }
+
+  predict(input) {
+    this.setLoading(true);
+
+    const inputs = new Tensor(new Array(150528).fill(0), 'float32', [1, 3, 224, 224]);
+    this.session.run([inputs])
+      .then((out) => this.setPredict(out))
+      .catch((error) => this.setError(error))
+      .finally(() => this.setLoading(false));
   }
 }
+
 
 
 export default new ModelStore();

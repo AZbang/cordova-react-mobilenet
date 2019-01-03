@@ -9,7 +9,6 @@ class ChipCard extends React.PureComponent {
 
   render() {
     let style = {};
-    console.log(this.props);
     if (this.props.top) style.top = this.props.show ? 10 : -200;
     else if (this.props.bottom) style.bottom = this.props.show ? 10 : -200;
 

@@ -7,7 +7,9 @@ import ChipCard from '../shared/chip-card/ChipCard';
 @observer
 class CameraController extends React.Component {
   onSnapshot = (img) => {
-    this.props.modelStore.predict(img);
+    img.style.position = 'absolute';
+    img.style.top = 0;
+    document.body.appendChild(img);
   }
 
   render() {
@@ -18,8 +20,7 @@ class CameraController extends React.Component {
         stream={mediaStore.stream}
         snapshotInterval={500}
         onSnapshot={this.onSnapshot}
-        snapshotWidth={224}
-        snapshotHeight={224}
+        snapshotSize={224}
       />
     }
 

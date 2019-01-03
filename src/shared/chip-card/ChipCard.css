@@ -6,11 +6,11 @@
 }
 
 .chip-card__block {
-  background: rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, 1);
   text-transform: uppercase;
   text-align: center;
   line-height: 1.5em;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   color: #333;
 }

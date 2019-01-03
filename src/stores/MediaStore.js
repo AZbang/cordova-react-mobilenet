@@ -8,27 +8,24 @@ class MediaStore {
   @action setLoading(v) {
     this.loading = v;
   }
-  @action setStream(v) {
-    if(v instanceof Error) {
-      this.error = v;
-    } else {
-      this.stream = v;
-    }
+  @action setStream(stream) {
+    this.stream = stream;
+  }
+  @action setError(err) {
+    this.error = err;
   }
 
-  async getMediaStream(config) {
+  getMediaStream(config) {
     this.setLoading(true);
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
-        video: { facingMode: 'environment' },
-        ...config
-      });
-      this.setStream(stream);
-    } catch(err) {
-      this.setStream(err);
+    const constraints = {
+      audio: false,
+      video: { facingMode: 'environment' },
+      ...config
     }
-    this.setLoading(false);
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then((stream) => this.setStream(stream))
+      .catch((err) => this.setError(err))
+      .finally(() => this.setLoading(false));
   }
 }
 
