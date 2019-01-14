@@ -1,0 +1,9 @@
+.chip-card__mini {
+  transition: all .5s;
+  background: #fff;
+  color: #333;
+  line-height: 1.5em;
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -53,11 +53,11 @@ class Camera extends React.PureComponent {
     if(w > h) {
       const scale = size/h;
       const dx = w*scale/2-size/2;
-      this.ctx.drawImage(this.videoRef, -dx, 0, w*scale, 224);
+      this.ctx.drawImage(this.videoRef, -dx, 0, w*scale, size);
     } else {
       const scale = size/w;
       const dy = h*scale/2-size/2;
-      this.ctx.drawImage(this.videoRef, 0, -dy, 224, h*scale);
+      this.ctx.drawImage(this.videoRef, 0, -dy, size, h*scale);
     }
 
     const img = document.createElement('img');

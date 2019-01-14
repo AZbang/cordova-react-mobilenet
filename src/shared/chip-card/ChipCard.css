@@ -1,16 +1,32 @@
-.chip-card {
-  width: 100%;
-  position: fixed;
-  transition: all 1s;
+#chip-cards-top, #chip-cards-bottom {
+  width: 100vw;
+  position: absolute;
+  padding: 10px;
   box-sizing: border-box;
+  left: 0;
+}
+#chip-cards-top {
+  top: 0;
+}
+#chip-cards-bottom {
+  bottom: 0;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.chip-card__block {
-  background: rgba(255, 255, 255, 1);
-  text-transform: uppercase;
-  text-align: center;
-  line-height: 1.5em;
-  border-radius: 10px;
-  padding: 10px;
-  color: #333;
+.chip-card {
+  width: 100%;
+  position: relative;
+}
+.chip-card > div {
+  border-radius: 9px;
+  box-shadow: 0 4px 15px 0 rgba(93, 93, 93, 0.08);
+}
+
+#chip-cards-top .chip-card {
+  margin-bottom: 10px;
+}
+
+#chip-cards-bottom .chip-card {
+  margin-top: 10px;
 }
