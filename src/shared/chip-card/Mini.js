@@ -9,9 +9,10 @@ class Mini extends React.PureComponent {
         className="chip-card__mini"
         style={this.props.style}
         xs={this.props.size}>
-        <Textfit mode="single">
-          {this.props.children}
-        </Textfit>
+        {this.props.textFit ?
+          (<Textfit mode="single">{this.props.children}</Textfit>) :
+          (this.props.children)
+        }
       </div>
     )
   }

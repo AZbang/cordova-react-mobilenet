@@ -27,15 +27,6 @@ class Camera extends React.PureComponent {
   }
 
   initCamera = () => {
-    const videoSize = this.getVideoSettings();
-    const w = videoSize.width;
-    const h = videoSize.height;
-    const size = window.innerHeight;
-    const scale = size/h;
-    const dx = w*scale/2-window.innerWidth/2;
-    this.videoRef.style.height = size + 'px';
-    this.videoRef.style.marginLeft = -dx + 'px';
-
     this.videoRef.srcObject = this.props.stream;
     this.canvas.width = this.props.snapshotSize;
     this.canvas.height = this.props.snapshotSize;

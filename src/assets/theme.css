@@ -7,3 +7,18 @@ body {
   font-weight: bold;
   /* font-family: 'Staatliches', cursive; */
 }
+
+.avatar__emoji {
+  font-size: 3em;
+  margin: 9px 7px;
+}
+
+.rebus {
+  font-size: 1.5em;
+  display: block;
+  text-align: center;
+}
+
+.rebus img {
+  margin: 0 4px !important;
+}

@@ -1,5 +1,4 @@
 .chip-card__block {
-  transition: all .5s;
   background: #fff;
   color: #333;
   line-height: 1.5em;
@@ -16,8 +15,8 @@
   width: 70px;
   height: 70px;
   border-radius: 5px;
-  background: rgb(218, 218, 218);
   line-height: 0;
+  display: flex;
 }
 .chip-card__block__avatar img {
   border-radius: 5px;

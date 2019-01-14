@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import ChipCard from '../shared/chip-card/ChipCard';
 import Camera from '../shared/camera/Camera';
+import { Twemoji } from 'react-emoji-render';
 
 @inject('mediaStore', 'modelStore')
 @observer
@@ -33,7 +34,7 @@ class Playground extends React.Component {
     if(mediaStore.error) {
       return (
         <ChipCard top show type="block"
-          avatar="😭"
+          avatar={<Twemoji className="avatar__emoji" svg text="😭" />}
           title="Oh no..."
           text="Your device not support webrtc camera :("
         />
@@ -47,27 +48,23 @@ class Playground extends React.Component {
 
     return (
       <div className='Playground'>
-        <ChipCard top show type="mini">
-          Zoom the camera onto the flower to scan it
-        </ChipCard>
-        <ChipCard top show type="mini">
-          Zoom the camera onto the flower to scan it
-        </ChipCard>
+        {this.cameraController()}
 
-        <ChipCard top show type="block"
-          avatar="😭"
-          title="Oh no..."
-          text="Your device not support webrtc camera :("
-        />
+        <ChipCard top show textFit type="mini">
+          Zoom the camera onto the flower to scan it
+        </ChipCard>
 
         <ChipCard top show type="block"
           avatar={<img src={this.state.snapshot} />}
           title="Searching..."
           text="Trying to find a match with the picture."
         />
-        <ChipCard bottom show type="block"
+        <ChipCard bottom={true} show type="block"
           header="Главный штаб эрмитажа"
         />
+        <ChipCard bottom show type="block">
+          <Twemoji className="rebus" svg text="🐶🐶👨🐶🐶" />
+        </ChipCard>
       </div>
     )
   }
