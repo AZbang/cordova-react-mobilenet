@@ -22,10 +22,6 @@ class Camera extends React.PureComponent {
     clearInterval(this.timerId);
   }
 
-  getVideoSettings = () => {
-    return this.props.stream.getTracks()[0].getSettings()
-  }
-
   initCamera = () => {
     this.videoRef.srcObject = this.props.stream;
     this.canvas.width = this.props.snapshotSize;
@@ -36,12 +32,11 @@ class Camera extends React.PureComponent {
   }
 
   snapshot = () => {
-    const videoSize = this.getVideoSettings();
-    const w = videoSize.width;
-    const h = videoSize.height;
-    const size = this.props.snapshotSize || w;
+    const w = this.videoRef.videoWidth;
+    const h = this.videoRef.videoHeight;
+    const size = this.props.snapshotSize || 300;
 
-    if(w > h) {
+    if(window.screen.width > window.screen.height) {
       const scale = size/h;
       const dx = w*scale/2-size/2;
       this.ctx.drawImage(this.videoRef, -dx, 0, w*scale, size);
