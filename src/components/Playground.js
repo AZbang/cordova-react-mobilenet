@@ -36,7 +36,7 @@ class Playground extends React.Component {
         <ChipCard top show type="block"
           avatar={<Twemoji className="avatar__emoji" svg text="😭" />}
           title="Oh no..."
-          text="Your device not support webrtc camera :("
+          subtitle="Your device not support webrtc camera :("
         />
       )
     }
@@ -57,7 +57,7 @@ class Playground extends React.Component {
         <ChipCard top show type="block"
           avatar={<img src={this.state.snapshot} />}
           title="Searching..."
-          text="Trying to find a match with the picture."
+          subtitle="Trying to find a match with the picture."
         />
         <ChipCard bottom={true} show type="block"
           header="Главный штаб эрмитажа"

@@ -28,6 +28,7 @@
     "cross-env": "^5.2.0",
     "customize-cra": "^0.2.8",
     "gh-pages": "^2.0.1",
+    "node-sass": "^4.11.0",
     "react-app-rewired": "^1.6.2",
     "react-hot-loader": "^4.3.12",
     "react-scripts": "2.0.3"

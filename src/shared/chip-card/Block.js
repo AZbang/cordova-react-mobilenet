@@ -1,41 +1,41 @@
 import React from 'react';
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import './Block.css';
+import styles from './Block.module.sass';
 
 class Block extends React.PureComponent {
-  static defaultProps = {
-    show: true
-  }
-
   render() {
     return (
       <div
-        className="chip-card__block"
+        className={styles.block}
         style={this.props.style}>
-        <div className="chip-card__preview">
+        <div className={styles.preview}>
           {this.props.avatar &&
-            <div className="chip-card__block__avatar">
+            <div className={styles.avatar}>
               {this.props.avatar}
             </div>
           }
-          <div className="chip-card__block__text">
-            <div className="chip-card__block__text_title">
-              {this.props.title}
-            </div>
-            <div className="chip-card__block__text__subtitle">
-              {this.props.text}
-            </div>
+          <div className={styles.content}>
+            {this.props.title &&
+              <div className={styles.title}>
+                {this.props.title}
+              </div>
+            }
+            {this.props.subtitle &&
+              <div className={styles.subtitle}>
+                {this.props.subtitle}
+              </div>
+            }
           </div>
         </div>
-        <div className="chip-card__block__content">
+        <div className={styles.body}>
           {this.props.header &&
-            <div className="chip-card__block__content__header">
+            <div className={styles.header}>
               {this.props.header}
             </div>
           }
           {this.props.children}
         </div>
-        <div className="chip-card__block__buttons">
+        <div className={styles.buttons}>
           {this.props.buttons}
         </div>
       </div>
